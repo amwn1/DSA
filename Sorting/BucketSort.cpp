@@ -56,3 +56,18 @@ int main(){
      }
 
 }
+
+// ************ TIME AND SPACE COMPLEXITY **************
+// Time complexity
+// Assuming k is approximetely equal to the number
+
+// BEST CASE : Data is uniformly distributed
+// O(n)
+// // We use the inserstion sort because its the best algo for smaller numbers
+
+// WORST CASE : Everything goes into a single bucket 
+// If insertion sort is used O(n^2)
+
+// though an algo of n(log*n) is used , it wont be feasible for the best case 
+
+// SO bucket sort is optimally used when the elements are evenly seperated !
