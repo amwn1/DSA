@@ -1,0 +1,25 @@
+This is a type of a data structure in which the time complexity is very low while inserting , deleting and searching 
+
+Why ? 
+
+Suppose a string str="abcbdeaaf" and what is the max occuring character ?
+a=3
+b=2
+c=1 
+-> Thus a is the max occuring chracter.
+
+To solve this you can use the brute force method and use the count method by creating a 26 long string, though it might work but it isn't the optimal way. as you 
+have to continously loop through the string multiple times 
+
+But while using Hashing 'a' can be mapped to 0 , 'b' can be mapped to 1 , 'c' can be mapped to 2
+
+Now instead of max occuring alphabet we should find max occuring WORD , we use Hash map to create key value pair 
+
+Map can be  the time complexity will be O(1) for insertiion , deletion and searching.
+
+/// HASH TABLE ///
+
+Inbuilt Stuff :
+
+Map = O(logn)
+Unordered Map = O(1)
