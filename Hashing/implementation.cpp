@@ -17,7 +17,7 @@ int main() {
 
     //third way of insertion
 
-    m["kumar"] = 3; // this will insert the value 3 with the key kumar
+    m["kumar"] = 3; // this will insert the value 3 with the key kumar 
 
     return 0;
 }
