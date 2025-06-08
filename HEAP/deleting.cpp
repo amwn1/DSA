@@ -2,7 +2,7 @@
 #include <vector>
 using namespace std;
 
-// Helper to swap downwards
+// "bubble down" helper: restores min-heap property from index downwards
 void heapifyDown(vector<int>& heap, int index) {
     int size = heap.size();
     while (index < size) {
@@ -10,57 +10,69 @@ void heapifyDown(vector<int>& heap, int index) {
         int leftChild = 2 * index + 1;
         int rightChild = 2 * index + 2;
 
-        // Find smallest among index and children
+        // Compare with left child
         if (leftChild < size && heap[leftChild] < heap[smallest])
             smallest = leftChild;
+        // Compare with right child
         if (rightChild < size && heap[rightChild] < heap[smallest])
             smallest = rightChild;
 
-        // If index is smallest → done
+        // If the current node is already the smallest, heap property holds
         if (smallest == index)
             break;
 
+        // Otherwise, swap downwards and continue
         swap(heap[index], heap[smallest]);
-        index = smallest;  // move down
+        index = smallest;
     }
 }
 
-// Heapify upwards (already done before)
+// "bubble up" helper: restores min-heap property from index upwards
 void heapifyUp(vector<int>& heap, int index) {
     while (index > 0) {
         int parent = (index - 1) / 2;
+        // If child is smaller than parent, swap and continue upwards
         if (heap[parent] > heap[index]) {
             swap(heap[parent], heap[index]);
             index = parent;
         } else {
+            // Heap property satisfied
             break;
         }
     }
 }
 
-// Insert into heap
+// Insert a new value into the heap
 void insert(vector<int>& heap, int value) {
+    // 1) Append the new element at the end (as a new leaf)
     heap.push_back(value);
+    // 2) Restore heap by bubbling it up from the last index
     heapifyUp(heap, heap.size() - 1);
 }
 
-// Delete root element (min in min-heap)
+// Delete the minimum element (root) from the heap
 void deleteMin(vector<int>& heap) {
-    if (heap.empty()) return;
+    if (heap.empty()) return;  // nothing to delete
 
+    // 1) Move the last leaf to the root position
     heap[0] = heap.back();
+    // 2) Remove the last element (we've copied it to root)
     heap.pop_back();
+    // 3) Restore heap by bubbling it down from the root
     heapifyDown(heap, 0);
 }
 
-// Print heap array
+// Utility to print the heap array
 void printHeap(const vector<int>& heap) {
-    for (int v : heap) cout << v << " ";
+    for (int v : heap) 
+        cout << v << " ";
     cout << endl;
 }
 
 int main() {
     vector<int> heap;
+
+    // Insert elements one by one
     insert(heap, 5);
     insert(heap, 3);
     insert(heap, 8);
@@ -71,6 +83,7 @@ int main() {
     cout << "Initial heap: ";
     printHeap(heap);
 
+    // Remove the minimum (root) twice
     cout << "Delete min: ";
     deleteMin(heap);
     printHeap(heap);
