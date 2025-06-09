@@ -1,198 +1,194 @@
-/*
-====================================================
-🧠 C++ OOP CHEAT SHEET — Complete Revision
-====================================================
 
-✅ OOP = Object-Oriented Programming
-4 Pillars of OOP in C++:
-------------------------------------------
-| Pillar          | Meaning               |
-|-----------------|------------------------|
-| Encapsulation   | Hiding data + methods |
-| Abstraction     | Show only what’s needed |
-| Inheritance     | Reuse base class      |
-| Polymorphism    | One interface, many forms |
 
-====================================================
-🛡️ 1. ENCAPSULATION — Data Protection
-====================================================
+// /*
+// ====================================================
+// 🧠 C++ OOP CHEAT SHEET — Complete Revision
+// ====================================================
 
-- Keep data members private
-- Provide public getter/setter functions
+// ✅ OOP = Object-Oriented Programming
+// 4 Pillars of OOP in C++:
+// ------------------------------------------
+// | Pillar          | Meaning               |
+// |-----------------|------------------------|
+// | Encapsulation   | Hiding data + methods |
+// | Abstraction     | Show only what’s needed |
+// | Inheritance     | Reuse base class      |
+// | Polymorphism    | One interface, many forms |
 
-Example:
-*/
+// ====================================================
+// 🛡️ 1. ENCAPSULATION — Data Protection
+// ====================================================
 
-class BankAccount {
-private:
-    int balance;
+// - Keep data members private
+// - Provide public getter/setter functions
 
-public:
-    void deposit(int amount) {
-        if (amount > 0) balance += amount;
-    }
+// Example:
+// */
 
-    int getBalance() {
-        return balance;
-    }
-};
+// class BankAccount {
+// private:
+//     int balance;
 
-/*
-====================================================
-🧱 2. INHERITANCE — Code Reuse
-====================================================
+// public:
+//     void deposit(int amount) {
+//         if (amount > 0) balance += amount;
+//     }
 
-| Type         | Syntax                  |
-|--------------|--------------------------|
-| Single       | class B : public A       |
-| Multilevel   | A → B → C                |
-| Multiple     | class C : public A, B    |
-| Hierarchical | A → B, A → C             |
+//     int getBalance() {
+//         return balance;
+//     }
+// };
 
-Example:
-*/
+// /*
+// ====================================================
+// 🧱 2. INHERITANCE — Code Reuse
+// ====================================================
 
-class Vehicle {
-public:
-    void start() { cout << "Vehicle started\n"; }
-};
+// | Type         | Syntax                  |
+// |--------------|--------------------------|
+// | Single       | class B : public A       |
+// | Multilevel   | A → B → C                |
+// | Multiple     | class C : public A, B    |
+// | Hierarchical | A → B, A → C             |
 
-class Car : public Vehicle {
-public:
-    void honk() { cout << "Beep Beep!\n"; }
-};
+// Example:
+// */
 
-/*
-====================================================
-🔁 3. POLYMORPHISM — One Interface, Many Forms
-====================================================
+// class Vehicle {
+// public:
+//     void start() { cout << "Vehicle started\n"; }
+// };
 
-📌 Types:
-- Compile-time: Function Overloading, Constructor Overloading
-- Run-time: Function Overriding (with virtual)
+// class Car : public Vehicle {
+// public:
+//     void honk() { cout << "Beep Beep!\n"; }
+// };
 
-=== Compile-Time ===
-*/
+// /*
+// ====================================================
+// 🔁 3. POLYMORPHISM — One Interface, Many Forms
+// ====================================================
 
-class Math {
-public:
-    int add(int a, int b) { return a + b; }
-    double add(double a, double b) { return a + b; }
-};
+// 📌 Types:
+// - Compile-time: Function Overloading, Constructor Overloading
+// - Run-time: Function Overriding (with virtual)
 
-/*
-=== Constructor Overloading ===
-*/
+// === Compile-Time ===
+// */
 
-class Person {
-public:
-    string name;
-    int age;
+// class Math {
+// public:
+//     int add(int a, int b) { return a + b; }
+//     double add(double a, double b) { return a + b; }
+// };
 
-    Person() { name = "Unknown"; age = 0; }
-    Person(string n) { name = n; age = 0; }
-    Person(string n, int a) { name = n; age = a; }
-};
+// /*
+// === Constructor Overloading ===
+// */
 
-/*
-=== Run-Time (Virtual Functions) ===
-*/
+// class Person {
+// public:
+//     string name;
+//     int age;
 
-class Shape {
-public:
-    virtual void draw() { cout << "Drawing Shape\n"; }
-};
+//     Person() { name = "Unknown"; age = 0; }
+//     Person(string n) { name = n; age = 0; }
+//     Person(string n, int a) { name = n; age = a; }
+// };
 
-class Circle : public Shape {
-public:
-    void draw() override { cout << "Drawing Circle\n"; }
-};
+// /*
+// === Run-Time (Virtual Functions) ===
+// */
 
-/*
-✅ Polymorphism needs base class pointers/references:
-*/
+// class Shape {
+// public:
+//     virtual void draw() { cout << "Drawing Shape\n"; }
+// };
 
-Shape* s = new Circle();  // Runtime decision
-s->draw();                // Calls Circle::draw()
+// class Circle : public Shape {
+// public:
+//     void draw() override { cout << "Drawing Circle\n"; }
+// };
 
-/*
-====================================================
-🧠 ABSTRACT CLASSES & PURE VIRTUAL FUNCTIONS
-====================================================
+// /*
+// ✅ Polymorphism needs base class pointers/references:
+// */
 
-Used for ABSTRACTION.
+// Shape* s = new Circle();  // Runtime decision
+// s->draw();                // Calls Circle::draw()
 
-- Cannot instantiate
-- Must be inherited
-- Forces derived class to override methods
-*/
+// /*
+// ====================================================
+// 🧠 ABSTRACT CLASSES & PURE VIRTUAL FUNCTIONS
+// ====================================================
 
-class Animal {
-public:
-    virtual void makeSound() = 0; // Pure virtual
-};
+// Used for ABSTRACTION.
 
-class Dog : public Animal {
-public:
-    void makeSound() override { cout << "Woof!\n"; }
-};
+// - Cannot instantiate
+// - Must be inherited
+// - Forces derived class to override methods
+// */
 
-/*
-====================================================
-💣 DESTRUCTORS — Clean-up
-====================================================
+// class Animal {
+// public:
+//     virtual void makeSound() = 0; // Pure virtual
+// };
 
-Called when object goes out of scope or is deleted
+// class Dog : public Animal {
+// public:
+//     void makeSound() override { cout << "Woof!\n"; }
+// };
 
-Use when:
-- Using `new`
-- Opening files
-- Holding sockets, DB, GPU handles
+// /*
+// ====================================================
+// 💣 DESTRUCTORS — Clean-up
+// ====================================================
 
-*/
+// Called when object goes out of scope or is deleted
 
-class Buffer {
-    int* data;
-public:
-    Buffer(int size) {
-        data = new int[size];
-    }
+// Use when:
+// - Using `new`
+// - Opening files
+// - Holding sockets, DB, GPU handles
 
-    ~Buffer() {
-        delete[] data;  // Prevent memory leaks
-    }
-};
+// */
 
-/*
-====================================================
-📌 COMPILE-TIME vs RUN-TIME
-====================================================
+// class Buffer {
+//     int* data;
+// public:
+//     Buffer(int size) {
+//         data = new int[size];
+//     }
 
-| Feature            | Compile-Time        | Run-Time               |
-|--------------------|---------------------|------------------------|
-| Happens when?      | Before execution    | During program run     |
-| Catches errors     | Syntax errors       | Crashes, logic errors  |
-| Polymorphism type  | Overloading         | Overriding + virtual   |
-| Tools involved     | Compiler            | CPU, OS                |
+//     ~Buffer() {
+//         delete[] data;  // Prevent memory leaks
+//     }
+// };
 
-====================================================
-🧠 FINAL NOTES
-====================================================
+// /*
+// ====================================================
+// 📌 COMPILE-TIME vs RUN-TIME
+// ====================================================
 
-- Classes = blueprint, Objects = real entities
-- Use `public` to expose members
-- Use `private` to protect them (Encapsulation)
-- Use `virtual` and `override` for polymorphism
-- Use `= 0` for pure virtual → abstraction
-- Use `: public Base` for inheritance
-- Use `new` carefully → must `delete` or use smart pointers
+// | Feature            | Compile-Time        | Run-Time               |
+// |--------------------|---------------------|------------------------|
+// | Happens when?      | Before execution    | During program run     |
+// | Catches errors     | Syntax errors       | Crashes, logic errors  |
+// | Polymorphism type  | Overloading         | Overriding + virtual   |
+// | Tools involved     | Compiler            | CPU, OS                |
 
-*/
+// ====================================================
+// 🧠 FINAL NOTES
+// ====================================================
 
-#include <iostream>
-using namespace std;
+// - Classes = blueprint, Objects = real entities
+// - Use `public` to expose members
+// - Use `private` to protect them (Encapsulation)
+// - Use `virtual` and `override` for polymorphism
+// - Use `= 0` for pure virtual → abstraction
+// - Use `: public Base` for inheritance
+// - Use `new` carefully → must `delete` or use smart pointers
 
-int main() {
-    // Try examples here for practice!
-    return 0;
-}
+// */
+
+
