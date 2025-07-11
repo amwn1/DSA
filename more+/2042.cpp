@@ -6,22 +6,31 @@
 using namespace std;
 
 bool areNumbersAscending(string s) {
-    int i = 0 ; 
-    int j = INT_MIN;
-    while(i<s.length()){
-        if(isdigit(s[i])){
-        if(s[i] > j){
-            j = s[i];
-            
-        }
-        else{
-            return false;
-        }
-        }
-        i++ ;
+        int k = 0;
+        int j = INT_MIN;
+        int digit = 0;
+        for (int i = 0; i < s.length(); i++) {
+            if (isdigit(s[i])) {
+                digit = digit * 10 + (s[i] - '0');
+                continue;
+            }
+            if (digit != 0) {
+                k = digit;
+                digit = 0;
 
-    } 
-    return true ;
+                if (j < k)
+                    j = k;
+                else
+                    return false;
+            }
+        }
+        if(digit != 0 ){
+            k = digit ;
+            if(j<k) j = k ;
+            else return false;
+        }
+
+        return true;
     }
 
 
