@@ -11,29 +11,16 @@ using namespace std;
 class Solution {
 public:
 int pivotIndex(vector<int>& nums) {
-    int left = 0 ; 
-    int right = nums.size() - 1; 
-    int leftSum = nums[left] ; 
-    int rightSum = nums[right] ;
-    while (left<right)
-    {
-    if(leftSum < rightSum){
-        left++;
-        leftSum+= nums[left];
+    int totalSum = accumulate(nums.begin(),nums.end(),0);
+    int leftSum = 0 ;
+    int rightsum = 0 ;
+    for(int i = 0 ; i < nums.size();i++){
+        rightsum = totalSum - leftSum - nums[i];
+        if(rightsum == leftSum) return i ;
+        leftSum+= nums[i];
     }
-    else if(rightSum > leftSum)
-    {right--;
-     rightSum += nums[right];
-    }
-    else 
-    {left++;
-      right--;
-    }
-    }
-    return (leftSum == rightSum) ? right : -1;
-
-    
-    }
+    return -1;
+}     
 };
 
 int main() {
